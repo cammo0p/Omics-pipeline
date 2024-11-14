@@ -17,10 +17,10 @@ The pipeline consists of three primary stages, each requiring a corresponding `.
    - **Purpose**: Preprocesses raw sequencing data.
    - **Description**: Each sample has data split across two lanes, necessitating a merging step after trimming to produce final FASTQ files for downstream analysis.
    - **Key Steps**:
-     - **[FastQC]** Quality control on raw reads.
-     - **[Trimmomatic]** Trimming adapters and low-quality sequences.
+     - **[FastQC]** - Quality control on raw reads.
+     - **[Trimmomatic]** - Trimming adapters and low-quality sequences.
      - Merging lanes to create consolidated, trimmed FASTQ files.
-     - **(Optional)** **[MultiQC]** Summarizing all samples by aggregating the FastQC HTML outputs across samples (not included in the pipeline).
+     - **(Optional)** **[MultiQC]** - Summarising all samples by aggregating the FastQC HTML outputs across samples (not included in the pipeline).
 
 2. **`alignment.smk`**
    - **Purpose**: Aligns the merged FASTQ files to the reference genome.
