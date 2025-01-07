@@ -1,0 +1,10 @@
+
+# envs/preprocessing.yml
+name: preprocessing
+channels:
+ 	- bioconda
+  - conda-forge
+dependencies:
+	- fastqc
+	- docker run -it multiqc/multiqc
+	- trimmomatic

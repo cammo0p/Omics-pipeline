@@ -1,0 +1,29 @@
+# config/config.yml
+#############################
+### Project configuration ###
+#############################
+
+sample_table: "config/subset.tsv"
+sample_table_base: "config/subset_base.tsv"
+
+###############################
+### Analysis config options ###
+###############################
+
+
+threads: 32
+
+base_directory: "/home/huic/lstm_scratch/network_scratch/atacseq"
+
+current_directory: "/home/huic/lstm_scratch/network_scratch/Snake/atac"
+
+adapters: "/opt/miniconda/envs/aidanfoo/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa"
+
+ref_combined_genome: "/home/huic/lstm_data/reference/combined/combined_human_HIV.fasta"
+
+adapters: "/opt/miniconda/envs/aidanfoo/share/trimmomatic-0.39-2/adapters/NexteraPE-PE.fa:2:30:10"
+
+minlen: 36
+
+genome_size: 3099761147
+

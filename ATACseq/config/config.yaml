@@ -1,0 +1,13 @@
+# config.yml
+#############################
+### Project configuration ###
+#############################
+
+sample_table: "config/subset.tsv"
+
+###############################
+### Analysis config options ###
+###############################
+
+base_directory: "/home/huic/lstm_scratch/network_scratch/atacseq"
+ref_combined_genome: "/home/huic/lstm_data/referen/combined/combined_human_HIV.fasta"
