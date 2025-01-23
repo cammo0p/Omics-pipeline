@@ -28,9 +28,15 @@ The pipeline consists of three primary stages, each requiring a corresponding `.
    - **Key Steps**:
      - **[BWA MEM]** - Aligns the reads to the reference genome using BWA-MEM.
      - **[GATK]** - (Run with Docker) Marks duplicates in the aligned BAM file to improve downstream analyses.
-     - **[Samtools]** - Filters out mitochondrial (MT) reads and duplicates, generates a flagstat report for quality control.
-
-3. **`peakcalling.smk`**
+     
+3. **`filtering.smk`**
+   - **Purpose**: Removes reads that are not useful for peakcalling. 
+   - **Description**:This rule filters out mitochondrial (MT) reads and duplicates, generates a flagstat report for quality control.
+   - **Key Steps**:
+   -  **[Samtools]** - Filter out mitochondrial (MT) reads (Harvard ATAC-seq module for removeChrom python script), Keep properly paired reads (-f 3), Name sort the BAM for fixmate, Fix mate information, Sort and index the files, Convert BAM to BEDPE format, Generate a flagstat report
+   -   **[Picard]** - Remove PCR duplicates
+       
+4. **`peakcalling.smk`**
    - **Purpose**: Calls peaks from the BAM files, identifying regions of significant enrichment.
    - **Description**: This rule runs **MACS2** to call peaks on filtered BAM files (after removing mitochondrial reads and duplicates). The results can be used for downstream analysis such as differential peak calling or visualisation.
    - **Key Steps**:
