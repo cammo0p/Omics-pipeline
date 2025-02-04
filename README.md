@@ -31,13 +31,15 @@ The pipeline consists of three primary stages, each requiring a corresponding `.
      
 3. **`filtering.smk`**
    - **Purpose**: Removes reads that are not useful for peakcalling. 
-   - **Description**:This rule filters out mitochondrial (MT) reads and duplicates, generates a flagstat report for quality control.
+   - **Description**:This rule filters out mitochondrial (MT) reads and PCR duplicates, generates a flagstat report for quality control.
    - **Key Steps**:
-   -  **[Samtools]** - Filter out mitochondrial (MT) reads (Harvard ATAC-seq module for removeChrom python script), Keep properly paired reads (-f 3), Name sort the BAM for fixmate, Fix mate information, Sort and index the files, Convert BAM to BEDPE format, Generate a flagstat report
-   -   **[Picard]** - Remove PCR duplicates
+   -  **[Samtools]** - Filter out mitochondrial (MT) reads, PCR duplicates, and generate a flagstat report.
        
 4. **`peakcalling.smk`**
    - **Purpose**: Calls peaks from the BAM files, identifying regions of significant enrichment.
    - **Description**: This rule runs **MACS2** to call peaks on filtered BAM files (after removing mitochondrial reads and duplicates). The results can be used for downstream analysis such as differential peak calling or visualisation.
    - **Key Steps**:
      - **[MACS2 Call Peak]** - Uses MACS2 to call peaks from BAM files, specifying the format (`BAMPE` for paired-end), genome size, and keeping duplicate reads.
+    
+5. **`motifsearch.smk`**
+   
